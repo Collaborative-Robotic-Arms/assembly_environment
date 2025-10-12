@@ -13,7 +13,6 @@ find_package(robot_state_publisher REQUIRED) # Added common dependency
 # Install the directories containing configuration and robot description files
 install(DIRECTORY
     config
-    launch
     meshes
     urdf
     DESTINATION share/${PROJECT_NAME}/
