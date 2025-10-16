@@ -1,86 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- This XACRO contains the table and camera models exported from SolidWorks. -->
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="environment">
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:macro name="environment">
   
-  <!-- abb_table link definition (Root of the environment) -->
-  <link name="abb_table">
-    <inertial>
-      <origin xyz="0.3325 0 -0.561085" rpy="0 0 0" />
-      <mass value="580.907" />
-      <inertia ixx="80.377" ixy="0" ixz="0" iyy="114.089" iyz="0" izz="100.823" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://assembly_environment/meshes/abb_table.STL" />
-      </geometry>
-      <material name="">
-        <color rgba="0.792 0.820 0.933 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://assembly_environment/meshes/abb_table.STL" />
-      </geometry>
-    </collision>
-  </link>
+    <link name="abb_table">
+      <inertial>
+        <origin xyz="0.3325 0 -0.561085" rpy="0 0 0" />
+        <mass value="580.907" />
+        <inertia ixx="80.377" ixy="0" ixz="0" iyy="114.089" iyz="0" izz="100.823" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="file://$(find assembly_environment)/meshes/abb_table.STL" />
+        </geometry>
+        <material name="">
+          <color rgba="0.792 0.820 0.933 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="file://$(find assembly_environment)/meshes/abb_table.STL" />
+        </geometry>
+      </collision>
+    </link>
 
-  <!-- ar4_table link fixed to abb_table -->
-  <link name="ar4_table">
-    <inertial>
-      <origin xyz="-0.429355 0 -0.466079" rpy="0 0 0" />
-      <mass value="173.611" />
-      <inertia ixx="40.833" ixy="0" ixz="-0.418" iyy="53.233" iyz="0" izz="33.728" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://assembly_environment/meshes/ar4_table.STL" />
-      </geometry>
-      <material name="">
-        <color rgba="0.792 0.820 0.933 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://assembly_environment/meshes/ar4_table.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint name="ar4_frame" type="fixed">
-    <origin xyz="1.11 0 0.0065" rpy="0 0 3.14159265358979" />
-    <parent link="abb_table" />
-    <child link="ar4_table" />
-  </joint>
+    <link name="ar4_table">
+      <inertial>
+        <origin xyz="-0.429355 0 -0.466079" rpy="0 0 0" />
+        <mass value="173.611" />
+        <inertia ixx="40.833" ixy="0" ixz="-0.418" iyy="53.233" iyz="0" izz="33.728" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="file://$(find assembly_environment)/meshes/ar4_table.STL" />
+        </geometry>
+        <material name="">
+          <color rgba="0.792 0.820 0.933 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="file://$(find assembly_environment)/meshes/ar4_table.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="ar4_frame" type="fixed">
+      <origin xyz="1.11 0 0.0065" rpy="0 0 3.14159265358979" />
+      <parent link="abb_table" />
+      <child link="ar4_table" />
+    </joint>
 
-  <!-- camera link fixed to abb_table -->
-  <link name="camera">
-    <inertial>
-      <origin xyz="-0.015 0.115 -0.038" rpy="0 0 0" />
-      <mass value="0.069517" />
-      <inertia ixx="0.000369" ixy="0" ixz="0" iyy="1.347E-05" iyz="0" izz="0.000369" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://assembly_environment/meshes/camera.STL" />
-      </geometry>
-      <material name="">
-        <color rgba="0.792 0.820 0.933 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://assembly_environment/meshes/camera.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint name="camera_frame" type="fixed">
-    <origin xyz="0.67 0.01 0.8035" rpy="3.14159265358979 0 1.57079632679489" />
-    <parent link="abb_table" />
-    <child link="camera" />
-  </joint>
+    <link name="camera">
+      <inertial>
+        <origin xyz="-0.015 0.115 -0.038" rpy="0 0 0" />
+        <mass value="0.069517" />
+        <inertia ixx="0.000369" ixy="0" ixz="0" iyy="1.347E-05" iyz="0" izz="0.000369" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="file://$(find assembly_environment)/meshes/camera.STL" />
+        </geometry>
+        <material name="">
+          <color rgba="0.792 0.820 0.933 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="file://$(find assembly_environment)/meshes/camera.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="camera_frame" type="fixed">
+      <origin xyz="0.67 0.01 0.8035" rpy="3.14159265358979 0 1.57079632679489" />
+      <parent link="abb_table" />
+      <child link="camera" />
+    </joint>
+
+  </xacro:macro>
+
 </robot>
