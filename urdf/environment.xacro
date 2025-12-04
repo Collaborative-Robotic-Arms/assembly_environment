@@ -81,6 +81,41 @@
       <parent link="abb_table" />
       <child link="camera" />
     </joint>
+    <link name="camera_optical_frame">
+      <inertial>
+        <mass value="0.001" />
+        <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001" />
+      </inertial>
+    </link>
+
+    <joint name="camera_optical_joint" type="fixed">
+      <origin xyz="0 0 0.025" rpy="3.14 -1.57 -1.57" />
+      <parent link="camera" />
+      <child link="camera_optical_frame" />
+    </joint>
+
+    <gazebo reference="camera_optical_frame">
+        <sensor name="environment_camera" type="camera">
+        <always_on>true</always_on>
+        <update_rate>30.0</update_rate>
+        <visualize>true</visualize>
+        <topic>/environment_camera/image_raw</topic>
+        <camera>
+            <camera_info_topic>/environment_camera/camera_info</camera_info_topic>
+            <horizontal_fov>1.39626</horizontal_fov>
+            <image>
+            <width>640</width>
+            <height>480</height>
+            <format>R8G8B8</format>
+            </image>
+            <clip>
+            <near>0.02</near>
+            <far>300</far>
+            </clip>
+        </camera>
+        <gz_frame_id>camera_optical_frame</gz_frame_id>
+        </sensor>
+    </gazebo>
 
   </xacro:macro>
 
