@@ -88,8 +88,14 @@
       </inertial>
     </link>
 
-    <joint name="camera_optical_joint" type="fixed">
+    <!-- <joint name="camera_optical_joint" type="fixed">
       <origin xyz="0 0 0.025" rpy="3.14 -1.57 -1.57" />
+      <parent link="camera" />
+      <child link="camera_optical_frame" />
+    </joint> -->
+
+    <joint name="camera_optical_joint" type="fixed">
+      <origin xyz="0 0 0.025" rpy="1.57079632679 -1.57079632679 0.0" />
       <parent link="camera" />
       <child link="camera_optical_frame" />
     </joint>
