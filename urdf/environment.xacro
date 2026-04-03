@@ -111,8 +111,8 @@
             <camera_info_topic>/camera/camera/color/camera_info</camera_info_topic>
             <horizontal_fov>1.518436</horizontal_fov>
             <image>
-                <width>1280</width>
-                <height>720</height>
+                <width>640</width>
+                <height>480</height>
                 <format>R8G8B8</format>
             </image>
             <clip>
@@ -130,8 +130,8 @@
         <topic>/camera/camera/aligned_depth_to_color/image_raw</topic> <camera>
             <horizontal_fov>1.518436</horizontal_fov>
             <image>
-                <width>1280</width>
-                <height>720</height>
+                <width>640</width>
+                <height>480</height>
                 <format>R_FLOAT32</format>
             </image>
             <clip>
